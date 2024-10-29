@@ -1,0 +1,38 @@
+<script setup>
+import Card from '@/components/Card.vue';
+
+    defineProps({
+        productosMostrar: {
+            type: Array,
+            required: true   
+        }
+    })
+    //console.log(productosMostrar)
+</script>
+
+<template>
+  <main>
+    <div class="container my-5">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-6 text-center">
+                <h2 class="text-dark">Productos Tech</h2>
+                <p class="text-dark">Conocé los mejores productos de tecnología</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../../public/user-tech.png" alt="Ilustración" class="img-fluid" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+        <hr class="my-4">
+        
+        <div class="row">
+            <div class="col-md-4" v-for="producto in productosMostrar" :key="producto.id">
+                <Card 
+                    :nombre = "producto.nombre"
+                    :precio = "producto.precio"
+                    :imagen = "producto.imagen"
+                />
+            </div>
+        </div>    
+    </div>
+  </main>
+</template>
