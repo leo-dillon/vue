@@ -14,7 +14,7 @@
     $email = $user->email;
     $password = md5(  $user->password );
 
-    $sql = "INSERT INTO users( name, email, password)
+    $sql = "INSERT INTO usuario( name, email, password)
             VALUES(:name, :email, :password)";
 
     $stm =$pdo->prepare($sql);

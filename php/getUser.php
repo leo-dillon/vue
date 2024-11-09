@@ -2,7 +2,7 @@
     header('Access-Control-Allow-Origin: *');
     require_once('conexion.php');
     $sql = "SELECT *
-            FROM users";
+            FROM usuario";
     $stm = $pdo->query($sql);
     $users =  $stm->fetchAll( PDO::FETCH_ASSOC );
 
