@@ -2,10 +2,10 @@
     header('Access-Control-Allow-Origin: *');
     require_once('conexion.php');
     $sql = "SELECT *
-            FROM usuarios";
+            FROM productos";
     $stm = $pdo->query($sql);
-    $users =  $stm->fetchAll( PDO::FETCH_ASSOC );
+    $productos =  $stm->fetchAll( PDO::FETCH_ASSOC );
 
-    echo(json_encode( $users));
+    echo(json_encode( $productos));
 
-?>
+?>  
