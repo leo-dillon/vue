@@ -14,7 +14,7 @@
                 <router-link class="nav-link text-light ms-3" to="/contacto">Contacto</router-link>
 
                  <!-- El link para "Carrito" -->
-                 <router-link class="nav-link text-light ms-3" to="/carrito">Mi Carrito <i class="fa-solid fa-bag-shopping"></i></router-link>
+                <router-link class="nav-link text-light ms-3" to="/carrito">Mi Carrito <i class="fa-solid fa-bag-shopping"></i></router-link>
 
 
 

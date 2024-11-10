@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Nosotros from '@/views/Nosotros.vue'
 import Carrito from '@/views/Carrito.vue'
 import Contacto from '@/views/Contacto.vue'
+import Fallo from '@/views/fallo.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,11 @@ const router = createRouter({
       path: '/contacto',
       name: 'Contacto',
       component: Contacto
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'fallo',
+      component: Fallo,
     }
   ]
 })
