@@ -8,7 +8,7 @@
             </p>
         </div>
     </section>
-    <section  class="container my-4">
+    <section  class="my-4 historia">
         <h2 class="text-center p-1 pt-2">Nuestra Historia</h2>
         <div class="d-flex flex-column-reverse flex-md-row justify-content-around align-items-center">
             <img class="img-fluid" src="../../public/moto3.png" alt="Motorola 3">
@@ -57,5 +57,10 @@
     }
     p{
         font-size: 1.2rem;
+    }
+    .historia{
+        background-color: rgb(205, 205, 205);
+        padding-right: 3.5rem;
+        padding-left: 3.5rem;
     }
 </style>
