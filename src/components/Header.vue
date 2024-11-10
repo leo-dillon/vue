@@ -7,15 +7,23 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Contenedor para el buscador y "Mi Carrito" -->
+                <!-- El link para "Nosotros" -->
+                <router-link class="nav-link text-light ms-3" to="/nosotros">Nosotros</router-link>
+
+                <!-- El link para "Contacto" -->
+                <router-link class="nav-link text-light ms-3" to="/contacto">Contacto</router-link>
+
+                 <!-- El link para "Carrito" -->
+                 <router-link class="nav-link text-light ms-3" to="/carrito">Mi Carrito <i class="fa-solid fa-bag-shopping"></i></router-link>
+
+
+
+                <!-- Contenedor para el buscador -->
                 <div class="d-flex align-items-center ms-auto">
                     <!-- Buscador -->
                     <form class="d-flex me-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search" >
+                        <input class="form-control me-1" type="search" placeholder="Buscar producto" aria-label="Search" >
                     </form>
-
-                    <!-- Enlace al carrito -->
-                    <a class="nav-link text-light" href="#miCarrito">Mi Carrito <i class="fa-solid fa-bag-shopping"></i></a>
                 </div>
             </div>
         </nav>
