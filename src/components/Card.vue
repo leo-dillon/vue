@@ -8,7 +8,7 @@ defineProps({
     type: String,
     required: true
   },
-  imagen: {
+  imagen: { 
     type: String,
     required: true
   }
