@@ -27,6 +27,7 @@ import Card from '@/components/Card.vue';
         <div class="row">
             <div class="col-md-4" v-for="producto in productosMostrar" :key="producto.id">
                 <Card 
+                    :id = "producto.id"
                     :nombre = "producto.nombre"
                     :precio = "producto.precio"
                     :imagen = "producto.imagen"

@@ -1,5 +1,9 @@
 <script setup>
 defineProps({
+  id: {
+    type: Number,
+    required:  true
+  },
   nombre: {
     type: String,
     required: true
@@ -28,10 +32,8 @@ const verDetalleProducto = () => {
     <div class="card-body d-flex flex-column justify-content-center align-items-center">
       <h5 class="card-title">{{ nombre }}</h5>
       <p class="card-text">$ {{ precio }}</p>
-      <!-- Botón Agregar al carrito -->
       <button class="btn btn-outline-dark mb-2" @click="agregarAlCarrito(producto)">Agregar al carrito</button>
-      <!-- Botón Detalle del producto con evento de clic -->
-      <button class="btn btn-outline-dark" @click="verDetalleProducto">Detalle del producto</button>
+      <RouterLink class="btn btn-outline-dark" :to="{path: '/producto', query: {id: id}}">Detalle del producto</RouterLink>
     </div>
   </div>
 </template>
