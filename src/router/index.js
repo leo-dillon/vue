@@ -4,6 +4,7 @@ import Nosotros from '@/views/Nosotros.vue'
 import Carrito from '@/views/Carrito.vue'
 import Contacto from '@/views/Contacto.vue'
 import Fallo from '@/views/fallo.vue'
+import Producto from '@/views/Producto.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,11 @@ const router = createRouter({
       path: '/contacto',
       name: 'Contacto',
       component: Contacto
+    },
+    {
+      path: '/producto',
+      name: 'Producto',
+      component: Producto
     },
     {
       path: '/:pathMatch(.*)*',

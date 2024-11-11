@@ -1,0 +1,18 @@
+body {
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+div#app {
+    height: 100%;
+    min-height: 100vh;
+}
+.vista{
+    height: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

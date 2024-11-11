@@ -1,5 +1,3 @@
-let API_URL = "./src/JSON/productosTest.json"
-
 export default class ApiService {
     constructor(baseURL) {
       this.baseURL = baseURL;
@@ -19,6 +17,18 @@ export default class ApiService {
       try {
         const response = await fetch(`${this.baseURL}/getProductos.php`);
         return await response.json();
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        throw error;
+      }
+    }
+
+    async getProductoID(id) {
+      try {
+        const response = await fetch(`${this.baseURL}/getProductoID.php?id=${id}`);
+        const data = await response.json(); 
+        console.log(data)
+        return data
       } catch (error) {
         console.error("Error fetching products:", error);
         throw error;
