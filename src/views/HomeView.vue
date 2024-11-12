@@ -1,15 +1,30 @@
 <script setup>
+import ApiService from '@/API/apiService';
 import Card from '@/components/Card.vue';
 
-    defineProps({
-        productosMostrar: {
-            type: Array,
-            required: true   
-        }
-    })
-    //console.log(productosMostrar)
 </script>
-
+<script>
+    export default {
+        data() {
+            return {
+                productos: [],
+            };
+        },
+        created() {
+            this.apiService = new ApiService("http://127.0.0.1/basevue");
+            this.loadProductos();
+        },
+        methods: {
+        async loadProductos() {
+            try {
+                this.productos = await this.apiService.getProductos();
+            } catch {
+                alert("Error al cargar productos");
+            }
+        },
+        },
+    };
+</script>
 <template>
   <main>
     <div class="container my-5">
@@ -25,7 +40,7 @@ import Card from '@/components/Card.vue';
         <hr class="my-4">
         
         <div class="row">
-            <div class="col-md-4" v-for="producto in productosMostrar" :key="producto.id">
+            <div class="col-md-4" v-for="producto in productos" :key="producto.id">
                 <Card 
                     :id = "producto.id"
                     :nombre = "producto.nombre"

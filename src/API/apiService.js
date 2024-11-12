@@ -3,16 +3,6 @@ export default class ApiService {
       this.baseURL = baseURL;
     }
   
-    async getUsuarios() {
-      try {
-        const response = await fetch(`${this.baseURL}/getUser.php`);
-        return await response.json();
-      } catch (error) {
-        console.error("Error fetching users:", error);
-        throw error;
-      }
-    }
-  
     async getProductos() {
       try {
         const response = await fetch(`${this.baseURL}/getProductos.php`);
@@ -33,5 +23,22 @@ export default class ApiService {
         console.error("Error fetching products:", error);
         throw error;
       }
+    }
+
+    async login(email, contrasena){
+      try {
+        const response = await fetch(`${this.baseURL}/login.php`, {
+          method: "POST",
+          body: JSON.stringify({
+            "mail": email,
+            "contraseña": contrasena
+          })
+        });
+        const data = await response.json();
+        return data
+      } catch (error) {
+          console.error("Error fetching products:", error);
+
+        }
     }
   }
