@@ -2,6 +2,14 @@
     <main>
         <form class="border border-primary col-10 col-md-6" @submit.prevent="submitForm">
             <div class="form-group col-12">
+                <label for="nombre" class="fs-2">Nombre</label>
+                <input type="text" class="form-control col-12" id="nombre" placeholder="Juanito" v-model="nombre">
+            </div>
+            <div class="form-group col-12">
+                <label for="apellido" class="fs-2">Apellido</label>
+                <input type="text" class="form-control col-12" id="apellido" placeholder="Alcachofa" v-model="apellido">
+            </div>
+            <div class="form-group col-12">
                 <label for="mail" class="fs-2">Email</label>
                 <input type="email" class="form-control col-12" id="mail" aria-describedby="emailHelp" placeholder="leo@davinci.edu.ar" v-model="mail">
                 <small id="emailHelp" class="form-text text-muted">No compartas tus datos con nadie. Evite inconvenientes</small>
@@ -10,7 +18,7 @@
                 <label for="constrasena" class="fs-2">Contraseña</label>
                 <input type="password" class="form-control col-12" id="constrasena" placeholder="***********" v-model="contrasena">
             </div>
-            <button type="submit" class="btn btn-primary col-12 mt-2">iniciar Sesion</button>
+            <button type="submit" class="btn btn-primary col-12 mt-2">Registrarse</button>
             <p v-if="error" class="text-danger">{{ error }}</p>
         </form>
         <div>
@@ -36,6 +44,8 @@
     export default{
         data() {
             return {
+                nombre: "",
+                apellido: "",
                 mail: "",
                 contrasena: "",
                 error: "",
@@ -53,11 +63,10 @@
         methods: {
             async submitForm() {
                 try {
-                    this.user = await this.apiService.login(this.mail, this.contrasena)
-                    if (this.user.length > 0){
-                        this.loginUser(this.user)
+                    const response = await this.apiService.registrer(this.nombre, this.apellido, this.mail, this.contrasena)
+                    if(response.status){
                         Swal.fire({
-                            title: 'Bienvenido',
+                            title: 'Usuario registrado',
                             icon: 'success',
                             timer: 2000,
                             showConfirmButton: false,
@@ -89,7 +98,7 @@ form{
     justify-content: center;
     gap: 24px;
     padding: 12px 32px;
-    margin: auto;
+    margin: 24px auto;
     border: 1px solid grey;
     box-shadow: 0 0 12px grey;
     border-radius: 24px;
@@ -109,7 +118,7 @@ form{
     z-index: -1;
 }
 .circulo1{
-    top: 120px;
+    top: 40px;
     animation: moverIzqDerecha 17s linear alternate-reverse infinite;
 }
 .circulo2{
@@ -117,7 +126,7 @@ form{
     animation: moverIzqDerecha 8s linear alternate-reverse infinite;
 }
 .circulo3{
-    bottom: 120px;
+    bottom: 40px;
     animation: moverIzqDerecha 13s linear alternate-reverse infinite;
 }
 .contenedorCirculo img{

@@ -1,3 +1,5 @@
+import { parseStringStyle } from "@vue/shared";
+
 export default class ApiService {
     constructor(baseURL) {
       this.baseURL = baseURL;
@@ -25,6 +27,20 @@ export default class ApiService {
       }
     }
 
+    async deleteProducto(id){
+      console.log("eliminardo producto")
+      try {
+        const response = await fetch(`${this.baseURL}/deleteProducto.php`, {
+          method: "DELETE",
+          body: JSON.stringify({
+            "id": id
+          })
+        });
+      } catch (error) {
+          console.error("Error fetching products:", error);
+      }
+    }
+
     async login(email, contrasena){
       try {
         const response = await fetch(`${this.baseURL}/login.php`, {
@@ -34,11 +50,29 @@ export default class ApiService {
             "contraseña": contrasena
           })
         });
-        const data = await response.json();
-        return data
+        const dataText = await response.text();
+        const dataJson = JSON.parse(dataText)
+        return dataJson
       } catch (error) {
-          console.error("Error fetching products:", error);
+        console.error("Error fetching products:", error);
 
-        }
+      }
+    }
+    async registrer(nombre, apellido, email, contrasena){
+      console.log(nombre, apellido, email, contrasena)
+      try {
+        const response = await fetch(`${this.baseURL}/registrer.php`, {
+          method: "POST",
+          body: JSON.stringify({
+            "mail": email,
+            "contraseña": contrasena,
+            "nombre": nombre,
+            "apellido": apellido
+          })
+        });
+        return response
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     }
   }
