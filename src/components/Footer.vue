@@ -3,7 +3,7 @@
       <div class="container">
         <!-- Sección de navegación principal -->
         <section class="mb-4">
-          <a href="Header.vue">
+          <a href="index.html">
             <button type="button" class="btn btn-outline-light btn-techstore">
               Tech Store
             </button>

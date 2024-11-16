@@ -29,10 +29,6 @@
 
                 <!-- Contenedor para el buscador -->
                 <div class="d-flex align-items-center ms-auto">
-                    <!-- Buscador -->
-                    <form class="d-flex me-3" role="search">
-                        <input class="form-control me-1" type="search" placeholder="Buscar producto" aria-label="Search" >
-                    </form>
                     <div v-if="!auth.isUserLogged">
                         <router-link class="ms-3 btn btn-primary" to="/iniciarSesion">iniciar Sesión</router-link>
                         <router-link class="ms-3 btn btn-primary" to="/registrate">Registrarte</router-link>
