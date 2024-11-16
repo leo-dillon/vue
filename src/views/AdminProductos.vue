@@ -1,5 +1,7 @@
 <script>
 import ApiService from '@/API/apiService';
+import router from '@/router';
+import Swal from 'sweetalert2';
 
 export default {
     data () {
@@ -21,8 +23,28 @@ export default {
             }
         }, 
         editarProducto(producto) {
+          
         },
         borrarProducto(id) {
+          Swal.fire({
+            title: '¿Quieres eliminar este producto?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.apiService.deleteProducto(id)
+                Swal.fire({
+                    title: 'producto eliminado',
+                    icon: 'success',
+                    timer: 2000,
+                    showConfirmButton: false,
+                }).then(()=>{
+                  router.push('/')
+                })
+              }
+        });
         },
     }
 }

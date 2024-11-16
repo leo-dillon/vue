@@ -1,24 +1,48 @@
 <script>
     import { inject } from 'vue';
+    import { useAuth } from '@/store/useAuth';
+import Swal from 'sweetalert2';
+import router from '@/router';
     export default {
-    setup() {
-        const auth = inject('auth');
-        return { auth };
-    },
+        setup() {
+            const { logoutUser, isUserLogged } = useAuth(); // Obtén logoutUser y el estado de si el usuario está logueado
+
+            return { logoutUser, isUserLogged };
+        },
+        methods: {
+            async cerrarSesion() {
+                Swal.fire({
+                    title: '¿Quieres cerrar sesión?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, cerrar sesión',
+                    cancelButtonText: 'Cancelar',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.logoutUser();
+                            Swal.fire({
+                                title: 'Sesión cerrada',
+                                icon: 'success',
+                                timer: 2000,
+                                showConfirmButton: false,
+                            }).then( router.push('/') );
+                        }
+                });
+            }
+        }
     };
 </script>
 <template>
     <header class="">
         <nav class="col-12 px-4 navbar navbar-expand-lg navbar-dark" style="background-color: #4a4a4a;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Tech Store</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <router-link class="link nav-link text-light ms-3" to="/">Tech Store</router-link>
+
+               
 
                 <!-- El link para "Nosotros" -->
                 <router-link class="link nav-link text-light ms-3" to="/nosotros">Nosotros</router-link>
-
+                
                 <!-- El link para "Contacto" -->
                 <router-link class="link nav-link text-light ms-3" to="/contacto">Contacto</router-link>
 
@@ -29,17 +53,13 @@
 
                 <!-- Contenedor para el buscador -->
                 <div class="d-flex align-items-center ms-auto">
-                    <!-- Buscador -->
-                    <form class="d-flex me-3" role="search">
-                        <input class="form-control me-1" type="search" placeholder="Buscar producto" aria-label="Search" >
-                    </form>
-                    <div v-if="!auth.isUserLogged">
+                    <div v-if="!isUserLogged">
                         <router-link class="ms-3 btn btn-primary" to="/iniciarSesion">iniciar Sesión</router-link>
-                        <router-link class="ms-3 btn btn-primary" to="/registrate">Registrarte</router-link>
+                        <router-link class="ms-3 btn btn-primary" to="/registrarse">Registrarte</router-link>
                     </div>
-                    <div v-if="auth.isUserLogged">
+                    <div class="d-flex align-items-center ms-auto" v-if="isUserLogged">
                         <router-link class="ms-3 btn btn-primary" to="/adminProductos">Bienvenido Admin</router-link>
-                        
+                        <button class="ms-3 btn btn-danger" @click="cerrarSesion">Cerrar Sesión</button>
                     </div>
                 </div>
             </div>

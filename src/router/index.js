@@ -7,6 +7,7 @@ import Producto from '@/views/Producto.vue'
 import IniciarSesion from '@/views/IniciarSesion.vue'
 import Fallo from '@/views/Fallo.vue'
 import AdminProductos from '@/views/AdminProductos.vue'
+import Registrarse from '@/views/Registrarse.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,11 @@ const router = createRouter({
       path: '/iniciarSesion',
       name: 'iniciarSesion',
       component: IniciarSesion
+    },
+    {
+      path: '/registrarse',
+      name: 'registrarse',
+      component: Registrarse 
     },
     {
       path: '/adminProductos',

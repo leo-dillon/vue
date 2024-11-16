@@ -9,19 +9,35 @@
         if ($data === null) {
             throw new Exception('Error decoding JSON');
         }
-    
+        
+        $nombre = $data['nombre'];
+        $apellido = $data['apellido'];
         $user = $data['mail'];
         $pass = $data['contraseña'];
-    
-        $sql = "SELECT * FROM usuarios WHERE mail = :user AND contraseña = :pass";
+        $usuario = $name . ' ' . $apellido;
+        $sql = "INSERT INTO usuarios(
+                nombre,
+                apellido,
+                usuario,
+                contraseña,
+                mail
+            )
+            VALUES(
+                :nombre,
+                :apellido,
+                :usuario,
+                :pass,
+                :user
+            )
+            ";
         $stm = $pdo->prepare($sql);
         $stm->bindParam(':user', $user, PDO::PARAM_STR);
         $stm->bindParam(':pass', $pass, PDO::PARAM_STR);
+        $stm->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $stm->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+        $stm->bindParam(':usuario', $usuario, PDO::PARAM_STR);
         $stm->execute();
-        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
-    
         echo json_encode($result);
-    
     } catch (Exception $e) {
         echo json_encode(["error" => $e->getMessage()]);
     }
