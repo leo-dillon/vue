@@ -1,10 +1,48 @@
-import { parseStringStyle } from "@vue/shared";
+
 
 export default class ApiService {
     constructor(baseURL) {
       this.baseURL = baseURL;
     }
-  
+    async actualizarProducto(id, nombre, precio, imagen, descripcion, categoria) {
+      try {
+          const response = await fetch(`${this.baseURL}/updateProducto.php`, {
+              method: "POST", // Cambiar a "PUT" si se usa correctamente en el backend
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  "id": id,
+                  "nombre": nombre,
+                  "precio": precio,
+                  "imagen": imagen,
+                  "descripcion": descripcion,
+                  "categoria": categoria
+              })
+          });
+          return await response.json(); // Decodificar respuesta del servidor
+      } catch (error) {
+          console.error("Error actualizando el producto:", error);
+      }
+    }
+    async crearProducto(nombre, precio, imagen, descripcion, categoria){
+      try {
+        const response = await fetch(`${this.baseURL}/crearProducto.php`, {
+          method: "POST",
+          body: JSON.stringify({
+            "nombre": nombre,
+            "precio": precio,
+            "imagen": imagen,
+            "descripcion": descripcion,
+            "categoria": categoria
+          })
+        });
+        console.log(response.status)
+        return response
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    }
     async getProductos() {
       try {
         const response = await fetch(`${this.baseURL}/getProductos.php`);
@@ -59,7 +97,6 @@ export default class ApiService {
       }
     }
     async registrer(nombre, apellido, email, contrasena){
-      console.log(nombre, apellido, email, contrasena)
       try {
         const response = await fetch(`${this.baseURL}/registrer.php`, {
           method: "POST",

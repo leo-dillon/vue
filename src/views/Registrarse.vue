@@ -77,8 +77,6 @@
                 } catch (error){
                     this.error = "Error inesperado al iniciar Sesión. Intente nuevamente"
                     console.error(error)
-                } finally {
-                    console.log(this.user)
                 }
             }
         }
