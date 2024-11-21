@@ -60,12 +60,12 @@ import router from '@/router';
 </template>
 <style scoped>
     .btn{
-        background-color: #D1D1D1;   
+        background-color: #fff ;
         color: #05070a
     }
     .btn:hover {
         color: #05070a !important;
-        background-color: #fff !important;
+        background-color: #d4d4d4 !important;   
         border: 1px solid #05070a !important;
     }
 </style>

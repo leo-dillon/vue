@@ -10,7 +10,7 @@
                 <label for="constrasena" class="fs-2">Contraseña</label>
                 <input type="password" class="form-control col-12" id="constrasena" placeholder="***********" v-model="contrasena">
             </div>
-            <button type="submit" class="btn btn-primary col-12 mt-2">iniciar Sesion</button>
+            <button type="submit" class="btn btn-outline-dark col-12 mt-2">Iniciar Sesión</button>
             <p v-if="error" class="text-danger">{{ error }}</p>
         </form>
         <div>
@@ -135,5 +135,15 @@ form{
     100% {
         transform: translateX(-32px);
     }
+}
+.btn-outline-dark {
+        color: #fff !important;
+        background-color: #05070a !important;
+        border:2px solid #05070a !important;
+}
+.btn:hover {
+    color: #05070a !important;
+    background-color: #fff !important;
+    border: 2px solid #05070a !important;
 }
 </style>
