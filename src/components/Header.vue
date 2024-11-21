@@ -5,8 +5,7 @@ import Swal from 'sweetalert2';
 import router from '@/router';
     export default {
         setup() {
-            const { logoutUser, isUserLogged } = useAuth(); // Obtén logoutUser y el estado de si el usuario está logueado
-
+            const { logoutUser, isUserLogged } = useAuth(); 
             return { logoutUser, isUserLogged };
         },
         methods: {
@@ -38,27 +37,20 @@ import router from '@/router';
             <div class="container-fluid">
                 <router-link class="link nav-link text-light ms-3" to="/">Tech Store</router-link>
 
-               
-
-                <!-- El link para "Nosotros" -->
                 <router-link class="link nav-link text-light ms-3" to="/nosotros">Nosotros</router-link>
                 
-                <!-- El link para "Contacto" -->
                 <router-link class="link nav-link text-light ms-3" to="/contacto">Contacto</router-link>
 
-                 <!-- El link para "Carrito" -->
                 <router-link class="link nav-link text-light ms-3" to="/carrito">Mi Carrito <i class="fa-solid fa-bag-shopping"></i></router-link>
 
 
-
-                <!-- Contenedor para el buscador -->
                 <div class="d-flex align-items-center ms-auto">
                     <div v-if="!isUserLogged">
-                        <router-link class="ms-3 btn btn-primary" to="/iniciarSesion">iniciar Sesión</router-link>
-                        <router-link class="ms-3 btn btn-primary" to="/registrarse">Registrarte</router-link>
+                        <router-link class="ms-3 btn" to="/iniciarSesion">Iniciar Sesión</router-link>
+                        <router-link class="ms-3 btn" to="/registrarse">Registrarte</router-link>
                     </div>
                     <div class="d-flex align-items-center ms-auto" v-if="isUserLogged">
-                        <router-link class="ms-3 btn btn-primary" to="/adminProductos">Bienvenido Admin</router-link>
+                        <router-link class="ms-3 btn" to="/adminProductos">Bienvenido Admin</router-link>
                         <button class="ms-3 btn btn-danger" @click="cerrarSesion">Cerrar Sesión</button>
                     </div>
                 </div>
@@ -67,7 +59,13 @@ import router from '@/router';
     </header>
 </template>
 <style scoped>
-.link:hover{
-    line-height: 1px solid #0B5ED7;
-}
+    .btn{
+        background-color: #D1D1D1;   
+        color: #05070a
+    }
+    .btn:hover {
+        color: #05070a !important;
+        background-color: #fff !important;
+        border: 1px solid #05070a !important;
+    }
 </style>
