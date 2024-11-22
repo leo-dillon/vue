@@ -53,8 +53,7 @@ export default {
                 alert('Error inesperado: Intente nuevamente.')
                 console.error(error)
             }
-          }
-        },
+          },
         borrarProducto(id) {
           Swal.fire({
             title: '¿Quieres eliminar este producto?',
@@ -95,6 +94,7 @@ export default {
                 console.error(error)
             }
           }
+        }
     }
 </script>
 <template>
