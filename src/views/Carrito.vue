@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <div class="container mt-4">
+  <div class="container mt-4 d-flex flex-column">
     <h1>Mi Carrito</h1>
     <div v-if="carrito.length">
       <div v-for="item in carrito" :key="item.id" class="row mb-3">

@@ -60,3 +60,14 @@ const agregarAlCarrito = () => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.card.mb-4.shadow{
+  max-width: 400px;
+}
+@media (width < 800px){
+  .card.mb-4.shadow{
+    max-width: 25 0px;
+  } 
+}
+</style>

@@ -52,3 +52,10 @@ import Card from '@/components/Card.vue';
     </div>
   </main>
 </template>
+<style scoped>
+@media (width < 800px){
+    div.row div.col-md-4{
+        max-width: 250px;
+    }
+}
+</style>

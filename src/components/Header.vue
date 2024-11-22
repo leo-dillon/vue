@@ -34,7 +34,7 @@ import router from '@/router';
 <template>
     <header class="">
         <nav class="col-12 px-4 navbar navbar-expand-lg navbar-dark" style="background-color: #4a4a4a;">
-            <div class="container-fluid">
+            <div class="container-fluid pt-4 pt-md-0">
                 <router-link class="link nav-link text-light ms-3" to="/">Tech Store</router-link>
 
                 <router-link class="link nav-link text-light ms-3" to="/nosotros">Nosotros</router-link>
@@ -44,7 +44,7 @@ import router from '@/router';
                 <router-link class="link nav-link text-light ms-3" to="/carrito">Mi Carrito <i class="fa-solid fa-bag-shopping"></i></router-link>
 
 
-                <div class="d-flex align-items-center ms-auto">
+                <div class="d-flex align-items-center ms-md-auto me-md-0 mx-auto py-4 py-md-0" id="buttonsHeader">
                     <div v-if="!isUserLogged">
                         <router-link class="ms-3 btn" to="/iniciarSesion">Iniciar Sesión</router-link>
                         <router-link class="ms-3 btn" to="/registrarse">Registrarte</router-link>
